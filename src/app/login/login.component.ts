@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { JwtRequest } from '../model/jwtRequest';
 import { LoginService } from '../service/loginService';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,25 +12,43 @@ export class LoginComponent implements OnInit{
 
   user: JwtRequest= new JwtRequest();
 
-  constructor(private loginService:LoginService, private router:Router){
-
-  }
+  constructor(private router:Router, private loginService: LoginService){}
+  
   ngOnInit(): void {}
   
 
   formSubmit() {
-    console.log(this.user);
-    this.loginService.loginUser(this.user).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.hopePage();
+    this.loginService.authenticate(this.user).subscribe({
+      next: response => {
+        // Login successful, 
+        alert("Login Successfull");
+
+        //set session storage
+        this.assignSessionStorage(this.user.username)
+
+        //navigate to the main page
+        this.router.navigate(['main']);
       },
-      error: (err) => console.log(err)
+      error: error => {
+        // Login failed, display error message
+        alert("Login Unsuccessfull");
+        console.log('Login error:', error);
+      }
     });
   }
 
-  hopePage(){
-    this.router.navigate(['']);
+
+
+  assignSessionStorage(username:string){
+    this.loginService.getUserInfo(username).subscribe({
+      next: response=>{
+        sessionStorage.setItem("role",response.role);
+        sessionStorage.setItem("email", response.email);
+      },error: error=>{
+        console.log('Login error:', error);
+      }
+    });
+
   }
 
   goToRegisterPage() {
@@ -41,6 +57,10 @@ export class LoginComponent implements OnInit{
   }
   goToHomePage(){
     this.router.navigate(['']);
+  }
+
+  goToMainPage(){
+    this.router.navigate(['main']);
   }
 
 
