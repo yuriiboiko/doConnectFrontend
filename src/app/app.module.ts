@@ -15,7 +15,6 @@ import { SearchQuestionComponent } from './search-question/search-question.compo
 import { BasicAuthHtppInterceptorService } from './service/basicAuthHtppInterceptorService';
 import { UserListComponent } from './user-list/user-list.component';
 import { ConversationComponent } from './conversation/conversation.component';
-import { UnderconstructionComponent } from './underconstruction/underconstruction.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AnswerQuestionComponent } from './answerquestion/answerquestion.component';
 import { AnswerformComponent } from './answerform/answerform.component';
@@ -35,7 +34,6 @@ import { ApprovequestionComponent } from './approvequestion/approvequestion.comp
     SearchQuestionComponent,
     UserListComponent,
     ConversationComponent,
-    UnderconstructionComponent,
     ForbiddenComponent,
     AnswerQuestionComponent,
     AnswerformComponent,

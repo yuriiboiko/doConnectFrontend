@@ -12,18 +12,19 @@ import { USerDao } from "../model/UserDao";
 export class LoginService{
 
 
-    private baseUrl = "http://localhost:8080/authenticate";
+    private baseUrl = "http://localhost:8080";
+
 
     constructor(private httpClient : HttpClient){}
 
     getUserInfo(username:string):Observable<USerDao>{
-      return this.httpClient.get(`http://localhost:8080/getUserByUsername/${username}`) as Observable<USerDao>;
+      return this.httpClient.get(`${this.baseUrl}/getUserByUsername/${username}`) as Observable<USerDao>;
     }
 
 
     authenticate(user : JwtRequest) {
       
-        return this.httpClient.post<any>("http://localhost:8080/authenticate", user).pipe(
+        return this.httpClient.post<any>(`${this.baseUrl}/authenticate`, user).pipe(
             map(userData => {
               sessionStorage.setItem("username", user.username);
               let tokenStr = "Bearer " + userData.token;

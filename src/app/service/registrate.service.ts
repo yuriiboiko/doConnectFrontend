@@ -8,7 +8,9 @@ import { JwtRequest } from '../model/jwtRequest';
 })
 export class RegistrateService {
 
+  //private baseUrl = "http://34.214.252.220:8080/register";
   private baseUrl = "http://localhost:8080/register";
+
 
   constructor(private httpClient : HttpClient) { }
 

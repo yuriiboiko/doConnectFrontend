@@ -13,7 +13,6 @@ import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchQuestionComponent } from './search-question/search-question.component';
 import { AuthGuard } from './service/auth-guard.service';
-import { UnderconstructionComponent } from './underconstruction/underconstruction.component';
  
 
 const routes: Routes = [
@@ -21,7 +20,6 @@ const routes: Routes = [
     {path:"login", component:LoginComponent},
     {path:"", component:HomeComponent},
     {path:"register", component:RegisterComponent},
-    {path:"underConstruction", component:UnderconstructionComponent},
     {path:"forbidden", component:ForbiddenComponent},
     {path: "main", component:MainComponent, canActivate: [AuthGuard]},
     {path: "chat", component:UserListComponent, canActivate: [AuthGuard]},

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class ChatService{
 
     private apiUrl = 'http://localhost:8080';
+    
     private getAllUsersUrl = `${this.apiUrl}/getAll`;
     private addMsgUrl = `${this.apiUrl}/chat/addmsg`;
     private getMessagesUrl = `${this.apiUrl}/chat/getmessages`;
